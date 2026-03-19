@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 from scipy.stats import norm
 
+df_latest = pd.read_csv("consensus_imports/poisson_lambdas.csv")
+
 def win_prob(lambda_home, lambda_away):
     mu = lambda_home - lambda_away
     sigma = np.sqrt(lambda_home + lambda_away)
@@ -9,18 +11,13 @@ def win_prob(lambda_home, lambda_away):
     return float(prob)
 
 def poisson_predict(home_abbr, away_abbr):
-    try:
-        df_latest = pd.read_csv("../latest_matchups_only.csv")
-        match = df_latest[
-            (df_latest['team_abbreviation_home'] == home_abbr.upper()) & 
-            (df_latest['team_abbreviation_away'] == away_abbr.upper())
-        ]
-        
-        row = match.iloc[0]
-        lh, la = row['lambda_h'], row['lambda_a']
-        prob_home = win_prob(lh, la)
+    match = df_latest[
+        (df_latest['team_abbreviation_home'] == home_abbr.upper()) &
+        (df_latest['team_abbreviation_away'] == away_abbr.upper())
+    ]
 
-        return float(prob_home)
+    row = match.iloc[0]
+    lh, la = row['lambda_h'], row['lambda_a']
+    prob_home = win_prob(lh, la)
 
-    except FileNotFoundError:
-        print("Error: latest_matchups_only.csv not found. Run the creation script first.")
+    return prob_home
