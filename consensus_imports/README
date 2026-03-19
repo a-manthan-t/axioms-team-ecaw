@@ -1,3 +1,5 @@
 These are the trained models from the notebooks.
 
+Monte carlo weights stored in JSON file
+Poisson lamdas stored in CSV file
 Data files for various models also included.

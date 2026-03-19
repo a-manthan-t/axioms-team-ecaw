@@ -3,11 +3,10 @@ import numpy as np
 from scipy.stats import norm
 
 def win_prob(lambda_home, lambda_away):
-    #poisson(l1) - Poisson(l2) is approx Normal(mean=l1-l2, var=l1+l2)
-    #this speeds up calculations
     mu = lambda_home - lambda_away
     sigma = np.sqrt(lambda_home + lambda_away)
-    return 1 - norm.cdf(0, loc=mu, scale=sigma)
+    prob = 1 - norm.cdf(0, loc=mu, scale=sigma)
+    return float(prob)
 
 def poisson_predict(home_abbr, away_abbr):
     try:
@@ -17,8 +16,6 @@ def poisson_predict(home_abbr, away_abbr):
             (df_latest['team_abbreviation_away'] == away_abbr.upper())
         ]
         
-        if match.empty:
-            return f"No recent prediction found for {away_abbr} @ {home_abbr}."
         row = match.iloc[0]
         lh, la = row['lambda_h'], row['lambda_a']
         prob_home = win_prob(lh, la)
