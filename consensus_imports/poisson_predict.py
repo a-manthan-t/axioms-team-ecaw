@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from scipy.stats import norm
 
-df_latest = pd.read_csv("consensus_imports/poisson_lambdas.csv")
+__df_latest = pd.read_csv("consensus_imports/poisson_lambdas.csv")
 
 def win_prob(lambda_home, lambda_away):
     mu = lambda_home - lambda_away
@@ -11,9 +11,9 @@ def win_prob(lambda_home, lambda_away):
     return float(prob)
 
 def poisson_predict(home_abbr, away_abbr):
-    match = df_latest[
-        (df_latest['team_abbreviation_home'] == home_abbr.upper()) &
-        (df_latest['team_abbreviation_away'] == away_abbr.upper())
+    match = __df_latest[
+        (__df_latest['team_abbreviation_home'] == home_abbr.upper()) &
+        (__df_latest['team_abbreviation_away'] == away_abbr.upper())
     ]
 
     row = match.iloc[0]
