@@ -1,5 +1,5 @@
 """
-nba_predict.py
+regression_predict.py
 ─────────────────────────────────────────────────────────────────────────────
 Standalone NBA Linear-Regression predictor.
 
@@ -12,22 +12,22 @@ from __future__ import annotations
 import json
 import os
 
-_PROBS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "nba_predict.json")
-_probs: dict | None = None
+__PROBS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "regression_probs.json")
+__probs: dict | None = None
 
-def _load_probs() -> dict:
-    global _probs
-    if _probs is None:
-        if not os.path.exists(_PROBS_PATH):
+def __load_probs() -> dict:
+    global __probs
+    if __probs is None:
+        if not os.path.exists(__PROBS_PATH):
             raise FileNotFoundError(
-                f"Probability matrix not found: {_PROBS_PATH}\n"
-                "Run the matrix generator in the main file to create nba_predict.json."
+                f"Probability matrix not found: {__PROBS_PATH}\n"
+                "Run the matrix generator in the main file to create regression_probs.json."
             )
-        with open(_PROBS_PATH, "r") as f:
-            _probs = json.load(f)
-    return _probs
+        with open(__PROBS_PATH, "r") as f:
+            __probs = json.load(f)
+    return __probs
 
-def nba_predict(home: str, away: str) -> float:
+def regression_predict(home: str, away: str) -> float:
     """
     Return the probability that the home team wins.
     """
@@ -37,7 +37,7 @@ def nba_predict(home: str, away: str) -> float:
     if home == away:
         raise ValueError("Home and away teams must be different")
 
-    matrix = _load_probs()
+    matrix = __load_probs()
 
     if home not in matrix:
         raise ValueError(f'Unknown team "{home}". Valid: {sorted(matrix.keys())}')

@@ -35,21 +35,21 @@ from __future__ import annotations
 import json
 import os
 
-_PROBS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mc_probs.json")
-_probs: dict | None = None
+___PROBS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mc_probs.json")
+___probs: dict | None = None
 
 
-def _load_probs() -> dict:
-    global _probs
-    if _probs is None:
-        if not os.path.exists(_PROBS_PATH):
+def ___load_probs() -> dict:
+    global ___probs
+    if ___probs is None:
+        if not os.path.exists(___PROBS_PATH):
             raise FileNotFoundError(
-                f"Probability matrix not found: {_PROBS_PATH}\n"
+                f"Probability matrix not found: {___PROBS_PATH}\n"
                 "Run Section 12 in the notebook to generate mc_probs.json."
             )
-        with open(_PROBS_PATH, "r") as f:
-            _probs = json.load(f)
-    return _probs
+        with open(___PROBS_PATH, "r") as f:
+            ___probs = json.load(f)
+    return ___probs
 
 
 def mc_predict(home: str, away: str) -> float:
@@ -76,7 +76,7 @@ def mc_predict(home: str, away: str) -> float:
     if home == away:
         raise ValueError("home and away teams must be different")
 
-    matrix = _load_probs()
+    matrix = ___load_probs()
 
     if home not in matrix:
         raise ValueError(f'Unknown team "{home}". Valid: {sorted(matrix.keys())}')
