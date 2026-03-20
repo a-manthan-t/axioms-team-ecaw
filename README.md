@@ -11,4 +11,8 @@ This repository contains four base models:
 These are then combined into the final consensus model which weights their output probability according to
 their historical win rates.
 
-TODO add images here.
+## Paper Bet Results 
+
+The initial bankroll was $10,000, and the final bankroll after 5 days was:
+
+![](AxiomsPaperBet/FinalBankroll.png)
