@@ -26,4 +26,4 @@ And our transaction history is:
 ![](AxiomsPaperBet/Transactions1.png)
 ![](AxiomsPaperBet/Transactions2.png)
 
-We made $308.94 dollars in profit after betting for 5 days. 
+We made $308.94 dollars in profit after betting for 5 days, which is around 3.09%.
