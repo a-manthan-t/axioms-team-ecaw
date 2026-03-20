@@ -23,7 +23,7 @@ The bets we made were:
 
 And our transaction history is:
 
-![](AxiomsPaperBet/transactions1.png)
-![](AxiomsPaperBet/transactions2.png)
+![](AxiomsPaperBet/Transactions1.png)
+![](AxiomsPaperBet/Transactions2.png)
 
 We made $308.94 dollars in profit after betting for 5 days. 
