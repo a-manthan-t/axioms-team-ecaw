@@ -16,3 +16,14 @@ their historical win rates.
 The initial bankroll was $10,000, and the final bankroll after 5 days was:
 
 ![](AxiomsPaperBet/FinalBankroll.png)
+
+The bets we made were:
+
+![](AxiomsPaperBet/BetsMade.png)
+
+And our transaction history is:
+
+![](AxiomsPaperBet/transactions1.png)
+![](AxiomsPaperBet/transactions2.png)
+
+We made $308.94 dollars in profit after betting for 5 days. 
